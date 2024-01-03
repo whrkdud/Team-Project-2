@@ -1,0 +1,293 @@
+<header th:fragment="header"> <!-- header -->
+    <section id="logoSearch"> <!-- logoSearch -->
+        <div id="search">
+            <div id="detailSearch">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                <p>상세검색</p>
+            </div>
+        </div>
+        <div id="logo">
+            <img src="./images/logo.png">
+        </div>
+    </section>
+    <section id="user"> <!-- user -->
+        
+        <th:block th:if="${session.user} == null">
+            <div id="login">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                    <path d="M7.5 1v7h1V1h-1z"/>
+                    <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                </svg>
+                <p>로그인</p>
+            </div>
+        </th:block>
+
+        <th:block th:if="${session.user} != null">
+            <input type="hidden" th:value="${session.user.id}" id="userid">
+            <div id="loginO">
+                <div id="loginOText">
+                    <p>[[${session.user.name}]] 님&nbsp;&nbsp;</p>
+                </div>
+                <form action="/main" method="post" name="logout">
+                    <div id="logout">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                        <p>로그아웃</p>
+                    </div>
+                </form>
+            </div>
+        </th:block>
+        <div id="cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <p>장바구니</p>
+        </div>
+        <div id="mypage">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+            </svg>
+            <p>마이페이지</p>
+        </div>
+    </section>
+</header>
+
+<footer th:fragment="footer"> <!-- footer -->
+    <div id="introduce">
+        <div id="introduceWrap">
+            <p>주소 : 광주광역시 광산구 소촌로 152번길 37</p>
+            <p>대표이사 : 조가영</p>
+            <p>사업자등록번호 : 108-35-62845</p>
+        </div>
+    </div>
+    <div id="help">
+        <div id="helpWrap">
+            <p>고객센터 8356 - 2845</p>
+            <p>평일 09:00 ~ 18:00</p>
+            <p>토요일, 공휴일 휴무</p>
+        </div>
+    </div>
+</footer>
+
+<div id="checkBox" th:fragment="modal"> <!-- 상세검색 모달 -->
+    <div id="checkBoxX">
+        <p>&#215;</p>
+    </div>
+    <div id="choiceTitle">
+        <div id="choiceWrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <p>상세검색</p>
+        </div>
+    </div>
+    <form action="/searchlist" method="get">
+        <div id="choice">
+            <div id="manufacture"> 
+                <div id="manufactureTitle">
+                    <p>제조사별</p>
+                </div>
+                <ul id="manufactureCheck">
+                    <li>
+                        <input type="checkbox" name="hankook" value="한국타이어">
+                        한국타이어
+                    </li>
+                    <li>
+                        <input type="checkbox" name="kumho" value="금호타이어">    
+                        금호타이어
+                    </li>
+                    <li>
+                        <input type="checkbox" name="nexen" value="넥센타이어">
+                        넥센타이어
+                    </li>
+                    <li>
+                        <input type="checkbox" name="michelin" value="미쉐린타이어">
+                        미쉐린타이어
+                    </li>
+                    <li>
+                        <input type="checkbox" name="continental" value="콘티넨탈타이어">
+                        콘티넨탈타이어
+                    </li>
+                </ul>
+            </div>
+            <div id="car"> 
+                <div id="carTitle">
+                    <p>적용차종</p>
+                </div>
+                <ul id="carCheck">
+                    <li>
+                        <input type="checkbox" name="pcar" value="승용차용">
+                        승용차용
+                    </li>
+                    <li>
+                        <input type="checkbox" name="suvcar" value="SUV, RV용">    
+                        SUV,RV용
+                    </li>
+                </ul>
+            </div>
+            <div id="character"> 
+                <div id="characterTitle">
+                    <p>타이어특성</p>
+                </div>
+                <ul id="characterCheck">
+                    <li>
+                        <input type="checkbox" name="comfort" value="컴포트형">
+                        컴포트형
+                    </li>
+                    <li>
+                        <input type="checkbox" name="sports" value="스포츠형">    
+                        스포츠형
+                    </li>
+                    <li>
+                        <input type="checkbox" name="lownoise" value="저소음">
+                        저소음
+                    </li>
+                </ul>
+            </div>
+            <div id="mm"> 
+                <div id="mmTitle">
+                    <p>단면폭(mm)</p>
+                </div>
+                <ul id="mmCheck">
+                    <div id="mmCheck1">
+                        <li>
+                            <input type="checkbox" name="125" value="125mm">
+                            125mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="205" value="205mm">    
+                            205mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="215" value="215mm">
+                            215mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="225" value="225mm">
+                            225mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="235" value="235mm">
+                            235mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="245" value="245mm">
+                            245mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="255" value="255mm">    
+                            255mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="265" value="265mm">
+                            265mm
+                        </li>
+                    </div>
+                    <div id="mmCheck2">
+                        <li>
+                            <input type="checkbox" name="275" value="275mm">
+                            275mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="285" value="285mm">
+                            285mm
+                        </li>
+                        <li>
+                            <input type="checkbox" name="305" value="305mm">
+                            305mm
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div id="percent"> 
+                <div id="percentTitle">
+                    <p>편평비(%)</p>
+                </div>
+                <ul id="percentCheck">
+                    <div id="percentCheck1">
+                        <li>
+                            <input type="checkbox" name="30per" value="30%">
+                            30%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="35per" value="35%">    
+                            35%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="40per" value="40%">
+                            40%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="45per" value="45%">
+                            45%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="50per" value="50%">
+                            50%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="55per" value="55%">
+                            55%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="60per" value="60%">    
+                            60%
+                        </li>
+                        <li>
+                            <input type="checkbox" name="80per" value="80%">
+                            80%
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div id="inch"> 
+                <div id="inchTitle">
+                    <p>휠지름(인치)</p>
+                </div>
+                <ul id="inchCheck">
+                    <div id="inchCheck1">
+                        <li>
+                            <input type="checkbox" name="13inch" value="13인치">
+                            13인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="16inch" value="16인치">    
+                            16인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="17inch" value="17인치">
+                            17인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="18inch" value="18인치">
+                            18인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="19inch" value="19인치">
+                            19인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="20inch" value="20인치">
+                            20인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="21inch" value="21인치">    
+                            21인치
+                        </li>
+                        <li>
+                            <input type="checkbox" name="22inch" value="22인치">
+                            22인치
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div id="choiceButtonWrap">
+            <button id="choiceButton" type="sumit">검색</button>
+        </div>
+    </form>
+</div>

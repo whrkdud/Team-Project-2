@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="./css/detail.css">
+    <link rel="icon" href="./img/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <th:block th:if="${modal} != null">
+        <div class="modal">[[${modal}]]</div>
+    </th:block>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+        
+        <main>
+            <div class="main-wrapper"> 
+                <div class="main-header">
+                    <div>제품찾기</div>
+                    <div>장바구니</div>
+                    <div>마이페이지</div>
+                </div>
+                <div class="main">
+                    <div class="main-content">
+                        <img th:src="${product.product_image}">
+                        <div class="main-content-product">
+                            <div class="product_name">[[${product.product_name}]]</div>
+                            <div class="product_spec">[[${product.product_spec}]]</div>
+                            <div class="product_price">[[${product.product_price}]]</div>
+                        </div>
+                        <div class="main-content-buy">
+                            <div class="main-content-buy-qty">
+                                수량&nbsp;
+                                <div class="select-qty">
+                                    <button type="button" class="qtyminus">-</button>
+                                    <div class="qty">0</div>
+                                    <button type="button" class="qtyplus">+</button>
+                                </div>
+                            </div>
+                            <div class="totalprice">총 상품금액&nbsp; <span class="price">0</span>원</div>
+                            <th:block th:if="${session.user} != null">
+                                <input class="userid" type="hidden" th:value="${session.user.id}">
+                            </th:block>
+                            <form action="/detail" method="post">
+                                <input type="hidden" th:value="${product.seq}" name="seq">
+                                <input class="product_qty" type="hidden" name="qty">
+                                <input type="hidden" value="O" name="modal">
+                                <th:block th:if="${session.user} != null">
+                                    <input type="hidden" th:value="${session.user.id}" name="id">
+                                </th:block>
+                                <button type="submit" class="cart">장바구니</button>
+                            </form>
+                            <form action="/product" method="get">
+                                <input type="hidden" th:value="${product.seq}" name="seq">
+                                <input class="product_qty" type="hidden" name="qty">
+                                <input type="hidden" value="O" name="detail">
+                                <button type="submit" class="purchase">구매하기</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="main-spec">
+                        <div id="goodsdetail">상품 상세정보</div>
+                        <div class="main-spec-list">
+                            <table id="details">
+                                <tr>
+                                    <td id="design">제조회사</td>
+                                    <td>[[${company}]]</td>
+                                    <td id="design">적용차종</td>
+                                    <td>[[${product.car_type}]]</td>
+                                </tr>
+                            </table>
+                            <table id="details">
+                                <tr>
+                                    <th:block th:if="${product.season} != null or ${product.alpine} != null">
+                                        <th colspan="4" style="width:1200px">타이어 종류</th>
+                                    </th:block>
+                                </tr>
+                                <tr class="recommend">
+                                    <th:block th:if="${product.season} != null">
+                                        <td id="design">[[${product.season}]]</td>
+                                        <td>O</td>
+                                    </th:block>
+                                    <th:block th:if="${product.alpine} != null">
+                                        <td id="design">[[${product.alpine}]]</td>
+                                        <td>O</td>
+                                    </th:block>
+                                </tr>
+                            <table id="details">
+                                <tr>
+                                    <th colspan="4">타이어 특성</th>
+                                </tr>
+                                <tr>
+                                    <th:block th:if="${product.tire_type} != null">
+                                        <td id="design">[[${product.tire_type}]]</td>
+                                        <td>O</td>
+                                    </th:block>
+                                    <th:block th:if="${product.low_noise} != null">
+                                        <td id="design">[[${product.low_noise}]]</td>
+                                        <td>O</td>
+                                    </th:block>
+                                </tr>
+                                <tr>
+                                    <th:block th:if="${product.width} != null">
+                                        <td id="design">단면폭</td>
+                                        <td>[[${product.width}]]</td>
+                                    </th:block>
+                                    <th:block th:if="${product.aspect_ratio} != null">
+                                        <td id="design">편평비</td>
+                                        <td>[[${product.aspect_ratio}]]</td>
+                                    </th:block>
+                                </tr>
+                                <tr>
+                                    <th:block th:if="${product.wheel_diameter} != null">
+                                        <td id="design">휠지름</td>
+                                        <td>[[${product.wheel_diameter}]]</td>
+                                    </th:block>
+                                    <th:block th:if="${product.energy_efficiency_rating} != null">
+                                        <td id="design">에너지효율등급</td>
+                                        <td>[[${product.energy_efficiency_rating}]]</td>
+                                    </th:block>
+                                </tr>
+                                <tr>
+                                    <th:block th:if="${product.wet_road_braking_power} != null">
+                                        <td id="design">젖은노면제동력</td>
+                                        <td>[[${product.wet_road_braking_power}]]</td>
+                                    </th:block>
+                                    <th:block th:if="${product.utqg_treadwear} != null">
+                                        <td id="design">UTQG 마모지수</td>
+                                        <td>[[${product.utqg_treadwear}]]</td>
+                                    </th:block>
+                                </tr>
+                                <tr>
+                                    <th:block th:if="${product.utqg_braking_power} != null">
+                                        <td id="design">UTQG 제동력</td>
+                                        <td>[[${product.utqg_braking_power}]]</td>
+                                    </th:block>
+                                    <th:block th:if="${product.utqg_heat_resistance} != null">
+                                        <td id="design">UTQG 내열성</td>
+                                        <td>[[${product.utqg_heat_resistance}]]</td>
+                                    </th:block>
+                                </tr>
+                            </table>
+                            <table id="details1">
+                                    <th:block th:if="${product.recommend} != null">
+                                        <tr>    
+                                            <th id="design1" th:if="${product.recommend} != null">추천 차종</th>
+                                        </tr>
+                                        <td class="recommend">[[${product.recommend}]]</td>
+                                    </th:block>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="review">
+                    <div id="goodsreview">상품 리뷰</div><br>
+                        <th:block th:if="${cnt} < 1">
+                            <div class="main-review">
+                                <div class="main-review-list">현재 작성된 리뷰가 없습니다.</div>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if="${cnt} > 0">
+                            <div class="main-review" th:each="review : ${review}">
+                                <div class="main-review-id">[[${review.id}]]&nbsp;|&nbsp;[[${review.date}]]</div>
+                                <div class="main-review-list">[[${review.content}]]</div><br>
+                            </div>
+                        </th:block>
+                    </div> 
+                </div>
+
+            </div>
+        </main>
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+    
+    <!-- 장바구니에 상품 담기 완료 모달 -->
+    <th:block th:if="${session.user} != null">
+        <div id="cartO"> 
+            <div id="cartOX">
+                <p>&#215;</p>
+            </div>
+            <div id="cartOWrap">
+                <div id="cartOTitle"> 
+                    <div id="cartOTitleWrap"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                            <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        <p>장바구니에 담기 완료</p>
+                    </div>
+                </div>
+                <div id="cartOGoods"> 
+                    <div id="cartOGoodsWrap"> 
+                        <div id="cartOGoodsImg">
+                            <img th:src="${product.product_image}">
+                        </div>
+                        <div id="cartOGoodsDetail"> 
+                            <p>상품명 :&nbsp;[[${product.product_name}]]</p>
+                            <p>가격 :&nbsp;<span class=cartprice>[[${product.product_price}]]</span></p>
+                            <th:block th:if="${qty} != null">
+                                <p>수량 :&nbsp;<span class="cartqty">[[${qty}]]</span></p>
+                            </th:block>
+                            <p>총 금액 :&nbsp;<span class=carttotalprice></span>원</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="cartObtn"> 
+                    <a th:href="'/cart?id='+${session.user.id}"><button type="submit">장바구니로 이동</button></a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+
+    <script src="./js/detail.js"></script>
+</body>
+</html>

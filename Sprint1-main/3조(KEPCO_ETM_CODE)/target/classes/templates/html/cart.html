@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="icon" href="./img/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+        
+        <main> <!-- main -->
+            <section id="cartSection"> <!-- cart 장바구니 -->
+                <div class="cartpart">장바구니</div><!-- 페이지 제목 -->
+                
+                <th:block th:if="${cart} != empty">
+                    <div class="cartInformation">
+                        총 [[${cart.size()}]]건의 내역이 있습니다. <!-- cart DB의 갯수 부탁드립니다. -->
+                    </div>
+                    <div class="allList">
+                        <div class="cartList">
+                            <div class="cartheader">
+                                <div class="product_image">상품이미지</div>
+                                <div class="product_name">상품명</div>
+                                <div id="price">가격</div>
+                            </div>
+                            <div>수량</div>
+                            <div>총 주문금액</div>
+                            <div>제조회사</div>
+                            <div>적용차종</div>
+                            <div>타이어 종류</div>
+                            <div>적용시즌</div>
+                            <div>알파인 여부</div>
+                            <div>저소음 여부</div>
+                            <div>단면폭</div>
+                            <div>편평비</div>
+                            <div>휠지름</div>
+                            <div>에너지효율등급</div>
+                            <div>젖은노면제동력</div>
+                            <div>UTQG 마모지수</div>
+                            <div>UTQG 제동력</div>
+                            <div>UTQG 내열성</div>
+                            <div class="recommend">추천차종</div>
+                            <div class="delete">상품삭제</div>
+                        </div>
+                        <div class="cartListDetail" th:each="cart : ${cart}">
+                            <div class="cartheaderDetail">
+                                <div class="product_image"><img th:src="${cart.product_image}"></div>
+                                <div class="product_name">[[${cart.product_name}]]</div>
+                                <div id="price">[[${cart.product_price}]]</div>
+                            </div>
+                            <div id="qty">[[${cart.qty}]]</div>
+                            <div id="totalprice">총 주문금액</div>
+                            <div>[[${cart.manufacturer}]]</div>
+
+                            <div th:if="${cart.car_type} != null">[[${cart.car_type}]]</div>
+                            <div th:if="${cart.car_type} == null">정보 없음</div>
+
+                            <div th:if="${cart.tire_type} != null">[[${cart.tire_type}]]</div>
+                            <div th:if="${cart.tire_type} == null">정보 없음</div>
+
+                            <div th:if="${cart.season} != null">[[${cart.season}]]</div>
+                            <div th:if="${cart.season} == null">정보 없음</div>
+
+                            <div th:if="${cart.alpine} != null">[[${cart.alpine}]]</div>
+                            <div th:if="${cart.alpine} == null">정보 없음</div>
+
+                            <div th:if="${cart.low_noise} != null">[[${cart.low_noise}]]</div>
+                            <div th:if="${cart.low_noise} == null">정보 없음</div>
+
+                            <div th:if="${cart.width} != null">[[${cart.width}]]</div>
+                            <div th:if="${cart.width} == null">정보 없음</div>
+
+                            <div th:if="${cart.aspect_ratio} != null">[[${cart.aspect_ratio}]]</div>
+                            <div th:if="${cart.aspect_ratio} == null">정보 없음</div>
+
+                            <div th:if="${cart.wheel_diameter} != null">[[${cart.wheel_diameter}]]</div>
+                            <div th:if="${cart.wheel_diameter} == null">정보 없음</div>
+
+                            <div th:if="${cart.energy_efficiency_rating} != null">[[${cart.energy_efficiency_rating}]]</div>
+                            <div th:if="${cart.energy_efficiency_rating} == null">정보 없음</div>
+
+                            <div th:if="${cart.wet_road_braking_power} != null">[[${cart.wet_road_braking_power}]]</div>
+                            <div th:if="${cart.wet_road_braking_power} == null">정보 없음</div>
+
+                            <div th:if="${cart.utqg_treadwear} != null">[[${cart.utqg_treadwear}]]</div>
+                            <div th:if="${cart.utqg_treadwear} == null">정보 없음</div>
+
+                            <div th:if="${cart.utqg_braking_power} != null">[[${cart.utqg_braking_power}]]</div>
+                            <div th:if="${cart.utqg_braking_power} == null">정보 없음</div>
+
+                            <div th:if="${cart.utqg_heat_resistance} != null">[[${cart.utqg_heat_resistance}]]</div>
+                            <div th:if="${cart.utqg_heat_resistance} == null">정보 없음</div>
+
+                            <div th:if="${cart.recommend} != null" class="recommend">[[${cart.recommend}]]</div>
+                            <div th:if="${cart.recommend} == null" class="recommend">정보 없음</div>
+
+                            <div class="delete">
+                                <form action="/cart" method="post">
+                                    <input type="hidden" name="cart_seq" th:value="${cart.cart_seq}">
+                                    <input type="hidden" name="id" th:value="${session.user.id}">
+                                    <button type="submit" class="deleteBtn">삭제하기</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orderBtns">
+                        <a th:href="'/product?cart=O&id='+${session.user.id}"><button class="cartBigorderbtn">주문하기</button></a>
+                    </div>
+                </th:block>
+
+                <th:block th:if="${cart} == empty">
+                    <div class="cartInformation">
+                        현재 장바구니에 담긴 상품이 없습니다.
+                    </div>
+                </th:block>
+            </section>
+        </main>
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+    <script src="./js/cart.js"></script>
+</body>
+</html>

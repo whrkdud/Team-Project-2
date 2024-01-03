@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="../css/review.css">
+    <link rel="icon" href="./img/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+        
+        <main> <!-- main -->
+            <section id="reviewSection"> <!-- 리뷰 -->
+                <div class="reviewpart">리뷰 작성</div> <!-- 페이지 제목 -->
+                <form action="/review" method="post">
+                    <table class="reviewtable"><!-- 리뷰 -->
+                        <tr id="reviewproduct">  <!--장바구니 표의 head-->
+                            <td class="productimage"><img th:src="${tire.product_image}"></td> <!--리뷰할 상품이미지를 db에서 불러와 주세요-->
+                            <td class="productname"><a href="#">[[${tire.product_name}]]</a></td><!--리뷰할 상품명을 db에서 불러와 주세요, 리뷰할 상품 상세페이지로 anchor부탁드립니다.-->
+                        </tr>
+                        <tr class="reviewContent"> <!--장바구니 표의 리스트-->
+                            <td class="content" colspan="2">
+                                <input type="text" placeholder="이곳을 클릭하여 리뷰를 작성해주세요" name="content"></input>
+                                <input type="hidden" th:value="${session.user.id}" name="id">
+                                <input type="hidden" th:value="${tire.seq}" name="seq">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="orderBtns">
+                        <button type="submit" class="reviewResisterBtn">리뷰등록</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+
+    <script src="./js/review.js"></script>
+</body>
+</html>

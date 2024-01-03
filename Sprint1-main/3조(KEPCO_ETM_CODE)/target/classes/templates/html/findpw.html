@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/logInSignUp.css">
+    <title>비밀번호 찾기</title>
+</head>
+<body>
+    <div id="wrapper">
+            <a href="/main">
+                <img src=images/logo.png>
+            </a>
+    
+        <div id="wrapper-form">
+            <div id="box_pagename">비밀번호 찾기</div>
+    
+            <div id="box_login">
+                <form th:action="@{/findpw}" method="post" class="form">
+                    <input type="text" name="id"  placeholder="  Your ID"  autocomplete="off" class="idInput">
+                    <div class="box-findid">아이디를 잊으셨나요? <a href="/findid" > 아이디 찾기</a></div> 
+                    <input type="text" name="name"  placeholder="  Your full Name"  autocomplete="off" class="nameInput">
+                    <input type="text" name="phonenum"  placeholder="  Your Phone Number"  autocomplete="off" class="phonenumInput">
+                    <input type="text" name="email"  placeholder="  Your e-mail"  autocomplete="off" class="emailInput">
+
+                    <div th:if="${error}">
+                        <div id="message">본인 확인에 실패하였습니다. <br> 입력하신 내용을 다시 확인해주세요.</div>
+                    </div>
+
+                    <button class="w-btn w-btn-indigo" type="submit">비밀번호 찾기</button>  
+                </form>
+            </div>
+            <div id="box_link1">
+                <div id="box-find1">
+                    <a href="/register">회원가입</a>
+                </div>
+                <div class="box-find3">
+                    <a href="/login" >로그인</a>
+                </div> 
+            </div>
+   
+        </div>
+
+    </div>
+</body>
+<script>
+    const form = document.querySelector(".form");
+    const idcheck = document.querySelector(".idInput");
+    const names = document.querySelector(".nameInput");
+    const email = document.querySelector(".emailInput");
+    const phonenum = document.querySelector(".phonenumInput")
+    form.addEventListener('submit', (e) => {
+        if (idcheck.value == "") {
+            alert("아이디를 입력해주세요");
+            e.preventDefault();
+            idcheck.focus();
+        } else if (names.value == "") {
+            alert("이름을 입력해주세요");
+            e.preventDefault();
+            names.focus();
+        } else if (phonenum.value =="") {
+            alert("전화번호를 입력해주세요");
+            e.preventDefault();
+            phonenum.focus();
+        } else if (email.value == "") {
+            alert("이메일 주소를 입력해주세요");
+            e.preventDefault();
+            email.focus();
+        } 
+    })
+</script>
+</html>

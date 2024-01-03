@@ -1,0 +1,242 @@
+/**/
+
+html, body{
+    margin:0 auto;
+    width: 100vh;
+    height: 100vh;
+    background:black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#wrapper{
+    width: 85vh;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*상단 evtiremall의 로고(움직임 효과 있음, 메인화면으로 링크 있음)*/
+img {
+    margin-top: 5vh;
+    width: 70vh;
+    object-fit:cover;
+    animation: fadein 3s;
+    -webkit-animation: fadein 5s;
+    animation-iteration-count:100;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* 위아래 회색선 박스 */
+#wrapper-form{
+    margin-top: 10vh;
+    width: 70vh;
+    border-top:solid 5px grey;
+    border-bottom:solid 3px grey;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#box_pagename {
+    margin-top: 1vh;
+    width: 70vh;
+    height: 5vh;
+    display: flex;
+    font-size: 3.3vh;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#box_login {
+    margin-top: 3vh;
+    width: 70vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2vh;
+    height: 5.5vh;
+    width: 60vh;
+    font-weight: 700;
+    border-radius: 1vh;
+    font-size: 2vh;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: darkgrey;
+    background-color: white;
+    border: none;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(16, 16, 16, 0.2);
+    border: 1px solid #0F222D;
+}
+input:focus,
+input:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.765);
+    border: 2px solid #0F222D;
+    font-size: 3vh;
+}
+
+#message{
+    color: white;
+    font-weight: 600;
+    padding: 1vh;
+    height: 5vh;
+    width: 60vh;
+    font-size: 2.5vh;
+}
+
+
+
+
+button{
+    margin-top: 3vh;
+    height: 8vh;
+    width: 60.5vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 3vh;
+
+}
+
+#idcheck{
+    margin-left: 2vh;
+    width: 15vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+.w-btn {
+    border: none;
+    padding: 0.1vh 0.1vh;
+    border-radius: 1vh;
+    box-shadow: 0.1vh 0.1vh rgba(0, 0, 0, 0.198);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-indigo {
+    background-color: grey;
+    color: white;
+}
+
+
+.w-btn:hover {
+
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.w-btn-outline:hover {
+
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.w-btn:active {
+    transform: scale(1.1);
+}
+
+#box_link1 {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 3vh;
+    width: 70vh;
+    height: 6vh; 
+}
+
+#box_link1 >div > a{
+    width: 18vh;
+    height: 3vh;    
+    font-size: 3vh;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 4vh;
+}
+
+span{
+    color: gray;
+    font-size: 3vh;
+}
+
+.box-findid{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 1vh;
+    font-size: 2vh;
+    color: gray;
+    font-weight: 600;
+}
+
+.box-findid > a{
+    display: flex;
+    width: 12vh;
+    font-size: 2vh;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 2vh;
+}
+
+#idUnavailable, #idAvailable{
+    font-size: 2vh;
+    font-weight: 600;
+    color: white;
+}
+
+#idInput{
+    width: 43vh;
+}
+
+#wrapper-idckeck{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.w-btn-indigo[disabled] {
+    background-color: gray;
+    color: darkgrey;
+    cursor: not-allowed;
+}
+
+
+/*findpwo.html에만 적용*/
+#findpwologin{
+    margin-bottom: 7vh;
+}

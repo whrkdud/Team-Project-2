@@ -1,0 +1,681 @@
+* {
+    /* border: 1px solid white; */
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-width: 100%;
+    height: fit-content;
+    padding-top: 12vh;
+    padding-bottom: 15vh;
+    background-color: black;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 12vh;
+    position: fixed;
+    top: 0;
+	z-index: 100;
+    background-color: black;
+    color: gray;
+}
+#logoSearch {
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+#search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+}
+#detailSearch {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    cursor: pointer;
+}
+#detailSearch > svg {
+    width: 2.5vw;
+    height: 3vh;
+}
+#detailSearch > p {
+    width: max-content;
+    height: max-content;
+}
+#logo {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logo > img {
+    width: 45%;
+    height: 30%;
+    cursor: pointer;
+}
+#user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    padding: 0 1%;
+}
+#user > * {
+    margin: 1%;
+}
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#login > * {
+    margin: 1% 0 0 0; 
+}
+#login > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#login > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#loginO {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+#loginOText {
+    width: fit-content;
+    height: fit-content;
+}
+#loginOText > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#logout > * {
+    margin: 1% 0 0 0;
+}
+#logout > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#logout > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#cart > * {
+    margin: 1% 0 0 0;
+}
+#cart > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#cart > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#mypage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#mypage > * {
+    margin: 1% 0 0 0;
+}
+#mypage > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#mypage > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+
+
+/* main */
+main {
+    width: 100%;
+    
+}
+
+#reviewSection {
+    width: 100%;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewpart{
+    width: 99vh;
+    font-size: 3vh;
+    font-weight: 700;
+    color: lightgray;
+    background-color: black;
+    margin-bottom: 1vh;
+}
+
+
+.reviewtable {
+    display: flex;
+    flex-direction: column;
+    border: solid 0.5vh gray;
+    width: 100vh;
+    font-size: 2vh;
+  }
+
+#reviewproduct{
+    color: white;
+    text-align: center;
+}
+
+.productimage{
+    width: 20vh;
+    height: 20vh;
+    border: 0.1vh solid whitesmoke;
+}
+
+.productimage > img {
+    width:150px;
+    height:150px;
+}
+
+.productname{
+    width: 80vh;
+    padding-left: 1vh;
+    text-align: left;
+}
+
+.productname > a{
+    text-decoration-line: none;
+    color: darkgrey ;
+}
+
+.content{
+    border-top: 0.5vh solid gray;
+}
+
+.content input{
+    height: 20vh;
+    width: 99vh;
+    font-size: 2vh;
+    background-color: black;
+    color: white;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(30, 30, 30);
+    padding: 1% 1vh;
+    font-size: small;
+    color: gray;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    background-color: black;
+}
+#introduce {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#introduceWrap {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+#introduceWrap * {
+    width: fit-content;
+    height: fit-content;
+}
+#help {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#helpWrap {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+#helpWrap * {
+    width: fit-content;
+    height: fit-content;
+}
+#helpWrap > p:nth-child(1) {
+    font-size: x-large;
+}
+
+/*리뷰등록 버튼*/
+.orderBtns{
+    margin-left: 35vh;
+}
+.reviewResisterBtn {
+    margin: 3vh 0vh 3vh 0vh;
+    font-size: 3vh;
+    width: 30vh;
+    height: 5vh;
+    appearance: none;
+    border: none;
+    border-radius: 1vh;
+    /* box-shadow: 0 0.1vh 1vh rgba(255, 255, 255, 0.643); */
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.25s;
+    background-color: gray;
+    color: white;
+}
+
+.deleteBtn:hover, .reviewResisterBtn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.delete:active, .reviewResisterBtn:active {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* 상세검색 모달 */
+#checkBox {
+    width: 50%;
+    height: fit-content;
+    display: none;
+    box-sizing: border-box;
+    background-color: white;
+    position: fixed;
+    top: 10vw;
+    left: 25vw;
+    z-index: 10;
+    color: black;
+    padding: 0.5vw 1vh;
+}
+#checkBoxX {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: end;
+    color: white;
+}
+#checkBoxX > p {
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+    padding: 0.5% 1vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+#choiceTitle {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 2% 2vh;
+    box-sizing: border-box;
+
+}
+#choiceWrap {
+    width: 100%;
+    height: fit-content;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+}
+#choiceWrap > svg {
+    width: 3%;
+    height: 3vh;
+    box-sizing: border-box;
+    margin: 0 0.5vh 0 0;
+}
+#choice {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+#manufacture {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#manufacture > form {
+    width: 85%;
+    height: fit-content;
+}
+#manufactureTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#manufactureCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#manufactureCheck > li {
+    margin: 0 1vh;
+}
+#manufactureCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#car {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#car > form {
+    width: 85%;
+    height: fit-content;
+}
+#carTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#carCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#carCheck > li {
+    margin: 0 1vh;
+}
+#carCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#character {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#character > form {
+    width: 85%;
+    height: fit-content;
+}
+#characterTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#characterCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#characterCheck > li {
+    margin: 0 1vh;
+}
+#characterCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mm {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#mm > form {
+    width: 85%;
+    height: fit-content;
+}
+#mmTitle {
+    width: 15%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#mmCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+}
+#mmCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck1 > li {
+    margin: 0 1vh;
+}
+#mmCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mmCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck2 > li {
+    margin: 0 1vh;
+}
+#mmCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mmCheck3 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck3 > li {
+    margin: 0 1vh;
+}
+#mmCheck3 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#percent {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#percent > form {
+    width: 85%;
+    height: fit-content;
+}
+#percentTitle {
+    width: 15%;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#percentCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 6.5vh;
+}
+#percentCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#percentCheck1 > li {
+    margin: 0 1vh;
+}
+#percentCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#percentCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#percentCheck2 > li {
+    margin: 0 1vh;
+}
+#percentCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#inch {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+#inch > form {
+    width: 85%;
+    height: fit-content;
+}
+#inchTitle {
+    width: 15%;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#inchCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 6.5vh;
+}
+#inchCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#inchCheck1 > li {
+    margin: 0 1vh;
+}
+#inchCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#inchCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#inchCheck2 > li {
+    margin: 0 1vh;
+}
+#inchCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#choiceButtonWrap {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw 0 0 0;
+}
+#choiceButton {
+    width: 20%;
+    height: 5vh;
+    background-color: black;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+}

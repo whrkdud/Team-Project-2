@@ -1,0 +1,968 @@
+/* header */
+* {
+    /* border: 1px solid white; */
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-width: 100%;
+    height: fit-content;
+    padding-top: 12vh;
+    padding-bottom: 15vh;
+    background-color: black;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 12vh;
+    position: fixed;
+    top: 0;
+	z-index: 100;
+    background-color: black;
+    color: gray;
+}
+#logoSearch {
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+#search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+}
+#detailSearch {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    cursor: pointer;
+}
+#detailSearch > svg {
+    width: 2.5vw;
+    height: 3vh;
+}
+#detailSearch > p {
+    width: max-content;
+    height: max-content;
+}
+#logo {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logo > img {
+    width: 45%;
+    height: 30%;
+    cursor: pointer;
+}
+#user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    padding: 0 1%;
+}
+#user > * {
+    margin: 1%;
+}
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#login > * {
+    margin: 1% 0 0 0; 
+}
+#login > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#login > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#loginO {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+#loginOText {
+    width: fit-content;
+    height: fit-content;
+}
+#loginOText > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#logout > * {
+    margin: 1% 0 0 0;
+}
+#logout > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#logout > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#cart > * {
+    margin: 1% 0 0 0;
+}
+#cart > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#cart > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+#mypage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+#mypage > * {
+    margin: 1% 0 0 0;
+}
+#mypage > svg {
+    width: 1.5vw;
+    height: 2vh;
+}
+#mypage > p {
+    width: max-content;
+    height: max-content;
+    font-size: small;
+}
+/* main */
+main {
+    width: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*main - 마이페이지의 4개 섹션*/
+
+.mypagepart{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    border-bottom: 0.1vh solid darkgrey;
+    position: fixed;
+    top:12vh;
+    background-color: black;
+}
+.mypagelist {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagetitle{
+    width: 100vh;
+    font-size: 3vh;
+    font-weight: 700;
+    color: lightgray;
+    /*background-color: green;*/
+    margin-bottom: 3vh;
+}
+.scroll_move{
+    text-decoration-line: none;
+    width: 20vh;
+    font-size: 2vh;
+    font-weight: 500;
+    color: lightgray; 
+    /*background-color: yellow;*/
+    margin-bottom: 1vh;
+    margin-right: 2vh;
+} 
+
+/*main-section 4개*/
+#mypageSection {
+    color: gray;
+}
+
+
+/*4개 섹션 공통사항*/
+.section{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sectiontitle{
+    font-size: 3vh;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 3vh;
+}
+/*점핑박스*/
+#jumpingboxmodify{
+    height: 20vh;
+    width: 100vh;
+}
+/*회원정보수정*/
+#modify {
+    width:100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top:solid 5px grey;
+    border-bottom:solid 3px grey;
+    margin-top:0vh;
+}
+#modify > .sectiontitle{
+    margin-top: 2vh;
+}
+#inputboxname{
+    font-size: 2vh;
+    color: white;
+
+}
+#sectionBox form input {
+    margin-bottom: 1vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 5.5vh;
+    width: 80vh;
+    font-weight: 700;
+    border-radius: 1vh;
+    font-size: 2vh;
+    line-height: 0.5vh;
+    letter-spacing: 0.1vh;
+    outline: none;
+    color: darkgrey;
+    background-color: white;
+    border: none;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(16, 16, 16, 0.2);
+    border: 1px solid #0F222D;
+}
+#sectionBox form input:focus,
+#sectionBox form input:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.765);
+    border: 2px solid #0F222D;
+    font-size: 3vh;
+}
+#sectionBox form button{
+    margin-top: 2vh;
+    height: 8vh;
+    width: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 3vh;
+}
+.w-btn {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.198);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+.w-btn-indigo {
+    background-color: grey;
+    color: white;
+}
+.w-btn:hover {
+
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn-outline:hover {
+
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn:active {
+    transform: scale(1.1);
+}
+#modifyButton{
+    margin-bottom: 5vh;
+}
+/*점핑박스*/
+#jumpingboxmyorder{
+    height: 20vh;
+    width: 100vh;
+}
+/*구매내역조회*/
+/*구매내역조회 - 구매내역이 없을 경우*/
+.myordernoData{
+    font-size: 2.5vh;
+    text-align: center;
+    padding: 3vh 0vh 3vh 0vh;
+}
+/*구매내역조회 - 구매내역이 있을 경우*/
+/*구매내역조회 - table*/
+.myorderList {
+    border-bottom: solid 0.5vh gray;
+    width: 100vh;
+    font-size: 2vh;
+  }
+/*구매내역조회 - table - 헤더부분*/
+#myordertablehead th{
+    background-color: gray;
+    color: white;
+    text-align: center;
+    border-top: 0.1vh solid gray;
+}
+/*구매내역조회 - table -행 사이의 간격*/
+.myorderList td{
+    border-top: 0.1vh solid gray;
+}
+/*구매내역조회 - table - td의 넓이 및 간격줄*/
+.myordertableimage{
+    width: 15vh;
+}
+.myordertablename{
+    width: 35vh;
+    border-right: 0.1vh solid gray; 
+}
+.myordertabledate{
+    width: 13vh;
+    text-align: center;
+    border-right: 0.1vh solid gray; 
+}
+.myordertablecount{
+    width: 7vh;
+    text-align: center;
+    border-right: 0.1vh solid gray; 
+}
+.myordertableprice{
+    width: 20vh;
+    text-align: center;
+    border-right: 0.1vh solid gray; 
+}
+/*구매내역조회 - table-상품명의 링크*/
+.myordertablename > a{
+    text-decoration-line: none;
+    color: darkgrey ;
+}
+/*구매내역조회 - table-이미지 크기*/
+.myordertableimage > img{
+    width: 15vh;
+    height: 15vh;
+    margin: 0;
+}
+/*리뷰작성 버튼*/
+.insertBtn {
+    width: 10vh;
+    height: 4vh;
+    appearance: none;
+    border: none;
+    padding: 1vh 1.5vh;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    background-color: gray;
+    color: white;
+    font-size: 1.5vh;
+    text-align: center;
+    margin-left: 0.5vh;
+}
+.insertBtn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.insertBtn:active {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+/*점핑박스*/
+#jumpingboxmyreview{
+    height: 20vh;
+    width: 100vh;
+}
+
+/*내가쓴리뷰*/
+/*내가쓴리뷰 - 내가쓴리뷰 없을 경우*/
+.myreviewnoData{
+    font-size: 2.5vh;
+    text-align: center;
+    padding: 3vh 0vh 3vh 0vh;
+}
+/*내가쓴리뷰 - 내가쓴리뷰 있을 경우*/
+/*내가쓴리뷰 - table*/
+.myreviewList {
+    border-bottom: solid 0.5vh gray;
+    width: 100vh;
+    font-size: 2vh;
+  }
+/*내가쓴리뷰 - table - 헤더부분*/
+#myreviewtablehead th{
+    background-color: gray;
+    color: white;
+    text-align: center;
+    border-top: 0.1vh solid gray;
+}
+/*내가쓴리뷰 - table -행 사이의 간격*/
+.myreviewList td{
+    border-top: 0.1vh solid gray;
+}
+/*내가쓴리뷰 - table - td의 넓이 및 간격줄*/
+.myreviewtableimage{
+    width: 15vh;
+}
+.myreviewtablename{
+    width: 35vh;
+    border-right: 0.1vh solid gray; 
+}
+.myreviewtabledate{
+    width: 13vh;
+    text-align: center;
+    border-right: 0.1vh solid gray; 
+}
+.myreviewtablereviewcontent{
+    width: 27vh;
+    text-align: center;
+    border-right: 0.1vh solid gray; 
+}
+
+/*내가쓴리뷰 - table-상품명의 링크*/
+.myreviewtablename > a{
+    text-decoration-line: none;
+    color: darkgrey ;
+}
+/*내가쓴리뷰 - table-이미지 크기*/
+.myreviewtableimage > img{
+    width: 15vh;
+    height: 15vh;
+    margin: 0;
+}
+
+/*점핑박스*/
+#jumpingboxmysearch{
+    height: 20vh;
+    width: 100vh;
+}
+
+
+/*상품검색내역*/
+/*상품검색내역 - 상품검색내역 없을 경우*/
+.mysearchnoData{
+    font-size: 2.5vh;
+    text-align: center;
+    padding: 3vh 0vh 3vh 0vh;
+}
+/*상품검색내역 - 상품검색내역 있을 경우*/
+/*상품검색내역 - table*/
+.mysearchList {
+    border-bottom: solid 0.5vh gray;
+    width: 100vh;
+    font-size: 2vh;
+  }
+/*상품검색내역 - table - 헤더부분*/
+#mysearchtablehead th{
+    background-color: gray;
+    color: white;
+    text-align: center;
+    border-top: 0.1vh solid gray;
+}
+/*상품검색내역 - table -행 사이의 간격*/
+.mysearchList td{
+    border-top: 0.1vh solid gray;
+}
+/*상품검색내역 - table - td의 넓이 및 간격줄*/
+.mysearchtableimage{
+    width: 15vh;
+}
+.mysearchtablename{
+    width: 75vh;
+    border-right: 0.1vh solid gray; 
+}
+
+
+/*상품검색내역 - table-상품명의 링크*/
+.mysearchtablename > a{
+    text-decoration-line: none;
+    color: darkgrey ;
+}
+/*상품검색내역 - table-이미지 크기*/
+.mysearchtableimage > img{
+    width: 15vh;
+    height: 15vh;
+    margin: 0;
+}
+
+
+/*패딩박스-맨 아래 푸터 바로 위*/
+#paddingboxbottom{
+    height: 20vh;
+    width: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(30, 30, 30);
+    padding: 1% 1vh;
+    font-size: small;
+    color: gray;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    background-color: black;
+}
+#introduce {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#introduceWrap {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+#introduceWrap * {
+    width: fit-content;
+    height: fit-content;
+}
+#help {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#helpWrap {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+}
+#helpWrap * {
+    width: fit-content;
+    height: fit-content;
+}
+#helpWrap > p:nth-child(1) {
+    font-size: x-large;
+}
+
+/* 상세검색 모달 */
+#checkBox {
+    width: 50%;
+    height: fit-content;
+    display: none;
+    box-sizing: border-box;
+    background-color: white;
+    position: fixed;
+    top: 10vw;
+    left: 25vw;
+    z-index: 10;
+    color: black;
+    padding: 0.5vw 1vh;
+}
+#checkBoxX {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: end;
+    color: white;
+}
+#checkBoxX > p {
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+    padding: 0.5% 1vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+#choiceTitle {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 2% 2vh;
+    box-sizing: border-box;
+
+}
+#choiceWrap {
+    width: 100%;
+    height: fit-content;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+}
+#choiceWrap > svg {
+    width: 3%;
+    height: 3vh;
+    box-sizing: border-box;
+    margin: 0 0.5vh 0 0;
+}
+#choice {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+#manufacture {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#manufacture > form {
+    width: 85%;
+    height: fit-content;
+}
+#manufactureTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#manufactureCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#manufactureCheck > li {
+    margin: 0 1vh;
+}
+#manufactureCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#car {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#car > form {
+    width: 85%;
+    height: fit-content;
+}
+#carTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#carCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#carCheck > li {
+    margin: 0 1vh;
+}
+#carCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#character {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#character > form {
+    width: 85%;
+    height: fit-content;
+}
+#characterTitle {
+    width: 15%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#characterCheck {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    align-items: center;
+    font-size: small;
+}
+#characterCheck > li {
+    margin: 0 1vh;
+}
+#characterCheck > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mm {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#mm > form {
+    width: 85%;
+    height: fit-content;
+}
+#mmTitle {
+    width: 15%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#mmCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+}
+#mmCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck1 > li {
+    margin: 0 1vh;
+}
+#mmCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mmCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck2 > li {
+    margin: 0 1vh;
+}
+#mmCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#mmCheck3 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#mmCheck3 > li {
+    margin: 0 1vh;
+}
+#mmCheck3 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#percent {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    height: fit-content;
+}
+#percent > form {
+    width: 85%;
+    height: fit-content;
+}
+#percentTitle {
+    width: 15%;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#percentCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 6.5vh;
+}
+#percentCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#percentCheck1 > li {
+    margin: 0 1vh;
+}
+#percentCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#percentCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#percentCheck2 > li {
+    margin: 0 1vh;
+}
+#percentCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#inch {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+#inch > form {
+    width: 85%;
+    height: fit-content;
+}
+#inchTitle {
+    width: 15%;
+    height: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-size: medium;
+    font-weight: bold;
+}
+#inchCheck {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 6.5vh;
+}
+#inchCheck1 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#inchCheck1 > li {
+    margin: 0 1vh;
+}
+#inchCheck1 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#inchCheck2 {
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    align-items: center;
+    font-size: small;
+}
+#inchCheck2 > li {
+    margin: 0 1vh;
+}
+#inchCheck2 > li > input[type=checkbox] {
+    zoom: 0.8;
+}
+#choiceButtonWrap {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw 0 0 0;
+}
+#choiceButton {
+    width: 20%;
+    height: 5vh;
+    background-color: black;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+}

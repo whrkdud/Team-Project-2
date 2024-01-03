@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="../css/mypage.css">
+    <link rel="icon" href="./img/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+    
+    <main> <!-- main -->
+        <div class="mypagepart">
+            <div class="pagetitle">마이페이지</div><!-- 페이지 제목 -->
+            <a href="#jumpingboxmodify" class="scroll_move">회원정보수정</a> <!--modify -->
+            <a href="#jumpingboxmyorder" class="scroll_move">구매내역조회</a><!-- myorder-->
+            <a href="#jumpingboxmyreview" class="scroll_move">내가 쓴 리뷰</a><!-- myreview-->
+            <a href="#jumpingboxmysearch" class="scroll_move">상품검색내역</a><!-- mysearch-->
+        </div>
+        <section id="mypageSection"> <!-- 마이페이지 섹션 리스트 묶음 -->
+            <div class="mypagelist">
+                <!-- jumpingbox 박스  -->
+                <div id="jumpingboxmodify"></div>
+                <div id="modify">
+                    <div class="sectiontitle">회원정보수정</div><!-- 회원정보수정section제목 -->
+                    <div id="sectionBox">
+                        <form action="/mypage" method="post" class="form">
+                            <input type="hidden" name="id" th:value="${session.user.id}">
+                            <span id="inputboxname">비밀번호</span>
+                            <input type="password" name="pw"  placeholder="Your Password"  autocomplete="off" class="pwInput">
+                            <span id="inputboxname">이름</span>
+                            <input type="text" name="name"  th:value="${session.user.name}"  autocomplete="off" class="nameInput">
+                            <span id="inputboxname">전화번호</span>
+                            <input type="text" name="phonenum"  th:value="${session.user.phonenumber}"  autocomplete="off" class="phonenumInput">
+                            <span id="inputboxname">이메일</span>
+                            <input type="text" name="email"  th:value="${session.user.email}"  autocomplete="off" class="emailInput">
+                            <!-- <input type="hidden" name="id" th:value="${session.user.id}"> -->
+                            <button class="w-btn w-btn-indigo" type="submit" id="modifyButton">수정</button>
+                        </form>
+                    </div>
+                </div> 
+                <!-- jumpingbox 박스  -->
+                <div id="jumpingboxmyorder"></div>
+
+                <!-- 구매내역조회 -->
+                <div class="section" id="myorder">
+                    <div class="sectiontitle">구매내역조회</div> <!-- 구매내역조회section제목 -->
+                    <table class="myorderList">
+                        
+                        <th:block th:if="${purchase.size()} == 0">
+                            <tr class="myorderDetail"> 
+                                <td class="myordernoData" colspan="6">구매하신 상품이 없습니다</td> <!--구매내역이 없는 경우입니다.-->
+                            </tr>
+                        </th:block>
+
+                        <th:block th:if="${purchase.size()} != 0">
+                            <tr id="myordertablehead">
+                                <th class="myordertabledetail" colspan="2">상품정보</th> 
+                                <th class="myordertabledate">주문일자</th>
+                                <th class="myordertablecount">수량</th>
+                                <th class="myordertableprice">총주문금액</th>
+                                <th class="myordertableinsert">리뷰작성</th>
+                            </tr>
+                            
+                            <tr class="orderListDetail" th:each="purchase : ${purchase}">
+                                <td class="myordertableimage"><img th:src="${purchase.product_image}" class="img"></td> 
+                                <td class="myordertablename"><a th:href="'/detail?seq='+${purchase.seq}+'&id='+${session.user.id}">[[${purchase.product_name}]]</a></td>
+                                <td class="myordertabledate">[[${purchase.purchase_date}]]</td>
+                                <td class="myordertablecount">[[${purchase.purchase_qty}]]</td>
+                                <td class="myordertableprice">[[${purchase.product_price}]]</td>
+                                <td class="myordertableinsert">
+                                    <a th:href="'/review?seq='+${purchase.seq}"><button type="submit" class="insertBtn">리뷰작성</button></a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div> 
+                <!-- jumpingbox 박스  -->
+                <div id="jumpingboxmyreview"></div>
+                <!-- 내가 쓴 리뷰 -->
+                <div class="section" id="myreview">
+                    <div class="sectiontitle">내가 쓴 리뷰</div><!-- 내가 쓴 리뷰section제목 -->
+                    <table class="myreviewList">
+                        <th:block th:if="${review.size()} == 0">
+                            <tr class="myreviewDetail"> 
+                                <td class="myreviewnoData" colspan="6">작성하신 리뷰가 없습니다</td> <!--구매내역이 없는 경우입니다.-->
+                            </tr>
+                        </th:block>
+
+                        <th:block th:if="${review.size()} != 0">
+                            <tr id="myreviewtablehead">  
+                                <th class="myreviewtableorderdetail" colspan="2">상품정보</th> 
+                                <th class="myreviewtableprice">리뷰 내용</th>
+                                <th class="myreviewtableorderdate">작성일자</th>
+                                <th class="myreviewtableinsert">리뷰 삭제</th>
+                            </tr>
+                
+                            <tr class="orderListDetail" th:each="review : ${review}"> 
+                                <td class="myreviewtableimage"><img th:src="${review.product_image}" class="img"></td> 
+                                <td class="myreviewtablename"><a th:href="'/detail?seq='+${review.seq}+'&id='+${session.user.id}">[[${review.product_name}]]</a></td>
+                                <td class="myreviewtablereviewcontent">[[${review.content}]]</td>
+                                <td class="myreviewtabledate">[[${review.date}]]</td>
+                                <td class="myreviewtableinsert">
+                                    <form method="post">
+                                        <input type="hidden" th:value="${review.review_seq}" name="review_seq">
+                                        <button type="submit" class="insertBtn" onclick="javascript:orderdeletebtn()">삭제</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div> 
+                <!-- jumpingbox 박스  -->
+                <div id="jumpingboxmysearch"></div>
+                <!-- 상품 검색 내역 -->
+                <div class="section" id="mysearch">
+                    <div class="sectiontitle">상품 검색 내역</div>
+                    <table class="mysearchList">
+                        
+                        <th:block th:if="${search.size()} == 0">
+                            <tr class="mysearchDetail"> 
+                                <td class="myreviewnoData" colspan="6">검색하신 상품이 없습니다</td> <!--검색내역이 없는 경우입니다.-->
+                            </tr>
+                        </th:block>
+                        
+                        <th:block th:if="${search.size()} != 0">
+                            <tr id="mysearchtablehead">  
+                                <th class="mysearchtableorderdetail" colspan="2">상품정보</th>
+                                <th class="mysearchtableinsert">내역 삭제</th>
+                            </tr>
+    
+                            <tr class="mysearchDetail" th:each="search : ${search}"> 
+                                <td class="mysearchtableimage"><img th:src="${search.product_image}" class="img"></td> 
+                                <td class="mysearchtablename"><a th:href="'/detail?seq='+${search.seq}+'&id='+${session.user.id}">[[${search.product_name}]]</a></td>
+                                <td class="mysearchtableinsert">
+                                    <form method="post">
+                                        <input type="hidden" th:value="${search.search_seq}" name="search_seq">
+                                        <button type="submit" class="insertBtn" onclick="javascript:searchdeletebtn()">삭제</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div> 
+                <!-- jumpingbox 박스  -->
+                <div id="paddingboxbottom"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+
+    <script src="js/mypage.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/logInSignUp.css">
+    <title>비밀번호 찾기 성공</title>
+</head>
+<body>
+    <div id="wrapper">
+            <a href="/main">
+                <img src=images/logo.png>
+            </a>
+    
+        <div id="wrapper-form">
+            <div id="box_pagename">비밀번호 찾기</div>
+    
+            <div id="box_login">
+                    <div id="message">회원님의 비밀번호는 "<span>[[${pw}]]</span>" 입니다.</div>
+                    <form action="/login"><button id="findpwologin" class="w-btn w-btn-indigo" type="submit">로그인</button></form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="./css/searchlist.css">
+    <link rel="icon" href="./images/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+        
+        <main>
+            <div id="searchlist">
+                <h3 id="searchresult">검색 결과 [[${tire.size()}]]개</h3><br>
+                <table>
+                    <tr th:each="tire : ${tire}" id="tirelist" th:onclick="'redirectToDetail('+${tire.seq}+')'">
+                        <td id="tireimage"><img th:src="${tire.product_image}" id="tireimg"></td>
+                        <td id= "tirenamespec">
+                            <div id="tirename"><h3>[[${tire.product_name}]]</h3></div>
+                            <div id="tirespec"><h4>[[${tire.product_spec}]]</h4></div>
+                        </td>
+                        <td id = "tirecost">[[${tire.product_price}]]원</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+    <th:block th:if="${session.user} != null">
+        <div class="getid">[[${session.user.id}]]</div>
+    </th:block>
+    <script src="./js/searchlist.js"></script>
+</body>
+<script th:inline="javascript">
+    const id = document.querySelector(".getid");
+    if (id != null) {
+        function redirectToDetail(seq) {
+            window.location.href = '/detail?id='+ id.innerHTML +'&seq=' + seq;
+        }
+    } else {
+        function redirectToDetail(seq) {
+            window.location.href = '/detail?seq=' + seq;
+        }
+    }
+  </script>
+</html>        

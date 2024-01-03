@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV TIRE MALL</title>
+  <link rel="stylesheet" href="./css/product.css">
+  <link rel="icon" href="./images/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <!-- 구매내역 insert를 위한 데이터 가져오기-->
+    <th:block th:if="${modal} != null">
+        <div class="modal">[[${modal}]]</div>
+    </th:block>
+
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+
+    <main> <!--<main>-->
+        <section id="cartSection"> <!-- 배송정보 -->
+            <div class="cartpart">배송정보</div><!-- 배송 제목 -->
+            <div class="cartInformation">
+        <table class="deliverytable" id="addadrtable">
+            <tr class="adress">
+                <th class="adresstable">주소 입력</th>
+                <td class="addadr"><textarea class="addadrinput"></textarea></td>
+                <td class="addadrbtns">
+                    <div class="addadrbtn">
+                        <div><button class="adrinsbtn">등록</button></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table class="deliverytable">
+            <tr class="adress">
+                <th class="adresstable">주소</th>
+                <td class="adressname">배송지를 입력해주세요.</td>
+                <td class="addadrbtns">
+                    <div class="addadrbtn">
+                        <div><button class="adrmodbtn">수정</button></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="name">
+                <th class="nametable">이름</th>
+                <td class="namepart" colspan="2">[[${session.user.name}]]</td>
+            </tr>
+            <tr class="number">
+                <th class="numberclass">연락처</th>
+                <td class="numbername" colspan="2">[[${session.user.phonenumber}]]</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+        <th:block th:if="${detail} == 'O'"> <!-- 상세 검색 페이지에서 넘어왔을 때 -->
+            <section class="detail "id="cartSection"> <!-- cart 장바구니 -->
+                <div class="cartpart">상품정보</div><!-- 페이지 제목 -->
+                <div class="cartInformation">
+                    <table class="cartList">
+                        <tr id="tablehead">
+                            <th class="productdetail" colspan="2">상품정보</th>
+                            <th class="countname">수량</th>
+                            <th class="pricename">주문금액</th>
+                        </tr>
+                        <tr class="cartListDetail">
+                            <td class="productimage"><img th:src="${product.product_image}"></td>
+                            <td class="productname">[[${product.product_name}]]</td>
+                            <td class="count">[[${qty}]]</td>
+                            <td class="price">[[${product.product_price}]]</td>
+                        </tr>
+                    </table>
+                    <div class="orderBtns">
+                        <form action="/product" method="post" class="orderbuttons">
+                            <input type="hidden" th:value="${product.seq}" name="seq">
+                            <input type="hidden" th:value="${qty}" name="qty">
+                            <input type="hidden" value="O" name="detail">
+                            <input type="hidden" value="O" name="modal">
+                            <input type="hidden" th:value="${session.user.id}" name="id">
+                            <button type="submit" class="cartBigorderbtn">총 결제하기</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </th:block>
+        
+        <th:block th:if="${cart} != null">
+            <div class="cartmsg">[[${cart}]]</div>
+        </th:block>
+        <th:block th:if="${cart} == 'O'"> <!-- cart쪽에서 넘어왔을 때 -->
+            <section id="cartSection"> <!-- cart 장바구니 -->
+                <div class="cartpart">상품정보</div><!-- 페이지 제목 -->
+                <div class="cartInformation">
+                    <table class="cartList">
+                        <tr id="tablehead">
+                            <th class="productdetail" colspan="2">상품정보</th>
+                            <th class="countname">수량</th>
+                            <th class="pricename">주문금액</th>
+                        </tr>
+                        <tr class="cartListDetail" th:each="cartlist : ${cartlist}">
+                            <td class="productimage"><img th:src="${cartlist.product_image}"></td>
+                            <td class="productname">[[${cartlist.product_name}]]</td>
+                            <td class="count">[[${cartlist.qty}]]</td>
+                            <td class="price">[[${cartlist.product_price}]]</td>
+                        </tr>
+                    </table>
+                        <div class="orderBtns">
+                            <form action="/product" method="post" class="orderbuttons">
+                                <th:block th:each="cartlist : ${cartlist}">
+                                    <input type="hidden" th:value="${cartlist.seq}" class="seqinput">
+                                    <input type="hidden" th:value="${cartlist.qty}" class="qtyinput">
+                                </th:block>
+                                <input type="hidden" th:value="${cartlist.size()}" name="cartsize">
+                                <input type="hidden" value="O" name="cart">
+                                <input type="hidden" value="O" name="modal">
+                                <input type="hidden" th:value="${session.user.id}" name="id">
+                                <button type="submit" class="cartBigorderbtn">총 결제하기</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+        </th:block>
+
+        <th:block th:if="${size} != null">
+            <div class="cartmsg">[[${size}]]</div>
+        </th:block>
+        <th:block th:if="${size} != null"> <!-- cart쪽에서 넘어왔을 때 -->
+            <section id="cartSection"> <!-- cart 장바구니 -->
+                <div class="cartpart">상품정보</div><!-- 페이지 제목 -->
+                <div class="cartInformation">
+                    <table class="cartList">
+                        <tr id="tablehead">
+                            <th class="productdetail" colspan="2">상품정보</th>
+                            <th class="countname">수량</th>
+                            <th class="pricename">주문금액</th>
+                        </tr>
+                        <tr class="cartListDetail" th:each="cartlist : ${cartlist}">
+                            <td class="productimage"><img th:src="${cartlist.product_image}"></td>
+                            <td class="productname">[[${cartlist.product_name}]]</td>
+                            <td class="count">[[${cartlist.purchase_qty}]]</td>
+                            <td class="price">[[${cartlist.product_price}]]</td>
+                        </tr>
+                    </table>
+                        <div class="orderBtns">
+                            <form action="/product" method="post" class="orderbuttons">
+                                <th:block th:each="cartlist : ${cartlist}">
+                                    <input type="hidden" th:value="${cartlist.seq}" class="seqinput">
+                                    <input type="hidden" th:value="${cartlist.purchase_qty}" class="qtyinput">
+                                </th:block>
+                                <input type="hidden" th:value="${cartlist.size()}" name="cartsize">
+                                <input type="hidden" value="O" name="cart">
+                                <input type="hidden" value="O" name="modal">
+                                <input type="hidden" th:value="${session.user.id}" name="id">
+                                <button type="submit" class="cartBigorderbtn">총 결제하기</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+        </th:block>
+    </main>
+
+
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+
+
+    <!-- 구매완료 모달 --> 
+    <th:block th:if="${detail} == 'O'">
+        <div id="buyO"> 
+            <div id="buyOWrap"> <!-- #buyOWrap -->
+                <div id="buyOTitle"> <!-- #buyOTitle -->
+                    <div id="buyOTitleWrap"> <!-- #buyOTitleWrap -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>
+                        <p>구매완료</p>
+                    </div>
+                </div>
+                <div id="buyOGoods"> <!-- #buyOGoods -->
+                    <div id="buyOGoodsWrap"> <!-- #buyOGoodsWrap -->
+                        <div id="buyOGoodsImg"> <!-- #buyOGoodsImg -->
+                            <img th:src="${product.product_image}">
+                        </div>
+                        <div id="buyOGoodsDetail"> <!-- #buyOGoodsDetail -->
+                            <p>상품명 :&nbsp;[[${product.product_name}]]</p>
+                            <p>가격 :&nbsp;[[${product.product_price}]]</p>
+                            <p>수량 :&nbsp;[[${qty}]]</p>
+                            <p class="totalprice">총 결제 금액 :&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="buyOText"> <!-- #buyOText -->
+                    <p>회원님께서 주문하신 상품의 구매가</p>
+                    <p>완료되었습니다.</p>
+                </div>
+                <div id="buyObtn"> <!-- #buyObtn -->
+                    <a th:href="'/mypage?id='+${session.user.id}+'#jumpingboxmyorder'"><button type="submit">구매내역조회</button></a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block th:if="${cart} == 'O'">
+        <div id="buyO"> 
+            <div id="buyOWrap"> <!-- #buyOWrap -->
+                <div id="buyOTitle"> <!-- #buyOTitle -->
+                    <div id="buyOTitleWrap"> <!-- #buyOTitleWrap -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>
+                        <p>구매완료</p>
+                    </div>
+                </div>
+                <div id="buyOGoods"> <!-- #buyOGoods -->
+                    <div id="buyOGoodsWrap" th:each="cartlist : ${cartlist}"> <!-- #buyOGoodsWrap -->
+                        <div id="buyOGoodsImg"> <!-- #buyOGoodsImg -->
+                            <img th:src="${cartlist.product_image}">
+                        </div>
+                        <div id="buyOGoodsDetail"> <!-- #buyOGoodsDetail -->
+                            <p>상품명 :&nbsp;[[${cartlist.product_name}]]</p>
+                            <p>가격 :&nbsp;[[${cartlist.product_price}]]</p>
+                            <p>수량 :&nbsp;[[${cartlist.qty}]]</p>  
+                        </div>
+                    </div>
+                    <div class="carttotalprice">
+                        <p class="totalprice">총 결제 금액 :&nbsp;</p>
+                    </div>
+                </div>
+                <div id="buyOText"> <!-- #buyOText -->
+                    <p>회원님께서 주문하신 상품의 구매가</p>
+                    <p>완료되었습니다.</p>
+                </div>
+                <div id="buyObtn"> <!-- #buyObtn -->
+                    <a th:href="'/mypage?id='+${session.user.id}+'#jumpingboxmyorder'"><button type="submit">구매내역조회</button></a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block th:if="${size} != null">
+        <div id="buyO"> 
+            <div id="buyOWrap"> <!-- #buyOWrap -->
+                <div id="buyOTitle"> <!-- #buyOTitle -->
+                    <div id="buyOTitleWrap"> <!-- #buyOTitleWrap -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>
+                        <p>구매완료</p>
+                    </div>
+                </div>
+                <div id="buyOGoods"> <!-- #buyOGoods -->
+                    <div id="buyOGoodsWrap" th:each="cartlist : ${cartlist}"> <!-- #buyOGoodsWrap -->
+                        <div id="buyOGoodsImg"> <!-- #buyOGoodsImg -->
+                            <img th:src="${cartlist.product_image}">
+                        </div>
+                        <div id="buyOGoodsDetail"> <!-- #buyOGoodsDetail -->
+                            <p>상품명 :&nbsp;[[${cartlist.product_name}]]</p>
+                            <p>가격 :&nbsp;[[${cartlist.product_price}]]</p>
+                            <p>수량 :&nbsp;[[${cartlist.purchase_qty}]]</p>  
+                        </div>
+                    </div>
+                    <div class="carttotalprice">
+                        <p class="totalprice">총 결제 금액 :&nbsp;</p>
+                    </div>
+                </div>
+                <div id="buyOText"> <!-- #buyOText -->
+                    <p>회원님께서 주문하신 상품의 구매가</p>
+                    <p>완료되었습니다.</p>
+                </div>
+                <div id="buyObtn"> <!-- #buyObtn -->
+                    <a th:href="'/mypage?id='+${session.user.id}+'#jumpingboxmyorder'"><button type="submit">구매내역조회</button></a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+
+
+    <!-- 상세검색 모달 -->
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+<script src="./js/product.js"></script>
+<script src="./js/order.js"></script>
+
+</body>
+</html>

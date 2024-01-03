@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV TIRE MALL</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="icon" href="./images/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <div id="allWrap">
+        <header th:replace="html/HFM.html::header"></header>
+        
+        <main> <!-- main -->
+            <section id="adVideo"> <!-- ad -->
+                <div class="sliderVideo">
+                    <div class="sliderInner">
+                        <div class="slider">
+                            <video muted autoplay loop>
+                                <source src="./video/hankook.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="slider">
+                            <video muted autoplay loop>
+                                <source src="./video/kumho.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="slider">
+                            <video muted autoplay loop>
+                                <source src="./video/nexen.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="slider">
+                            <video muted autoplay loop>
+                                <source src="./video/michelin.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="slider">
+                            <video muted autoplay loop>
+                                <source src="./video/continental.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="adImg">
+                <div id="adImgTitle">
+                    <p>인기상품</p>
+                </div>
+                <div id="adImgWrap">
+                    <div id="kumho">
+                        <img src="./images/testKumho.png">
+                        <div id="kumhoTextWrap" class="hover">
+                            <div id="kumhoText">
+                                <p>금호타이어</p>
+                                <p>Majesty9 EV SOLUS TA91</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nexen">
+                        <img src="./images/testNexen.png">
+                        <div id="nexenTextWrap" class="hover">
+                            <div id="nexenText">
+                                <p>넥센타이어</p>
+                                <p>ROADIAN GTX EV</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hankook">
+                        <img src="./images/testHankook.webp">
+                        <div id="hankookTextWrap" class="hover">
+                            <div id="hankookText">
+                                <p>한국타이어</p>
+                                <p>iON i*cept SUV</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="continental">
+                        <img src="./images/continental.png">
+                        <div id="continentalTextWrap" class="hover">
+                            <div id="continentalText">
+                                <p>콘티넨탈타이어</p>
+                                <p>ContiEcoContact™ 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="michelin">
+                        <img src="./images/testMichelin.full.webp">
+                        <div id="michelinTextWrap" class="hover">
+                            <div id="michelinText">
+                                <p>미쉐린타이어</p>
+                                <p>PILOT® SPORT EV</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer th:replace="html/HFM.html::footer"></footer>
+    </div>
+    <div id="checkBox" th:replace="html/HFM.html::modal"></div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
